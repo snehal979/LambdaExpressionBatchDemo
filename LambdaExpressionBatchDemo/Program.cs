@@ -10,6 +10,17 @@ namespace LambdaExpressionBatchDemo
             List<PersonData> listPersonInCity = new List<PersonData>();
             AddRecord(listPersonInCity);
             Display(listPersonInCity);
+            Console.WriteLine("Hint 1.Retrieving Top Two Record For Age Is Less Than 60 \n");
+            int choice = Convert.ToInt32(Console.ReadLine());
+            switch (choice)
+            {
+                case 1:
+                    //UC 2 
+                    Console.WriteLine("Retrieving Top Two Record For Age Is Less Than 60");
+                    var personList =listPersonInCity.FindAll(e => (e.Age <= 60)).Take(2).ToList();
+                    Display(personList);
+                    break;
+            }
             Console.ReadLine();
         }
         private static void AddRecord(List<PersonData> listPersonInCity)
