@@ -10,7 +10,8 @@ namespace LambdaExpressionBatchDemo
             List<PersonData> listPersonInCity = new List<PersonData>();
             AddRecord(listPersonInCity);
             Display(listPersonInCity);
-            Console.WriteLine("Hint 1.Retrieving Top Two Record For Age Is Less Than 60 \n 2.Retrieving Teen Age Person\n 3. All PersonAverage Of Age");
+            Console.WriteLine("Hint 1.Retrieving Top Two Record For Age Is Less Than 60 \n 2.Retrieving Teen Age Person\n 3. All PersonAverage Of Age" +
+                "\n4.Search Name is present or not");
             int choice = Convert.ToInt32(Console.ReadLine());
             switch (choice)
             {
@@ -38,6 +39,10 @@ namespace LambdaExpressionBatchDemo
                     double average = listPersonInCity.Average(e => e.Age);
                     Console.WriteLine("the average of all person age is " +average);
                     break;
+                case 4:
+                    //Uc5
+                    CheckPersonExistOrNot(listPersonInCity);
+                    break;
             }
             Console.ReadLine();
         }
@@ -60,6 +65,19 @@ namespace LambdaExpressionBatchDemo
                 Console.WriteLine("Id person :"+data.Id+"\n Name : "+data.Name+"\n address :"+data.Address+"\n Age: "+data.Age+"\n");
             }
         }
-
+        //Uc5 Search Name
+        private static void CheckPersonExistOrNot(List<PersonData> listPersonInCity)
+        {
+            Console.WriteLine("Enter the name For search");
+            string name = Console.ReadLine();
+            if (listPersonInCity.Any(e => (e.Name.Contains(name))))
+            {
+                Console.WriteLine("Person is present");
+            }
+            else
+            {
+                Console.WriteLine("Person is not present");
+            }
+        }
     }
 }
