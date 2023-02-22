@@ -10,7 +10,7 @@ namespace LambdaExpressionBatchDemo
             List<PersonData> listPersonInCity = new List<PersonData>();
             AddRecord(listPersonInCity);
             Display(listPersonInCity);
-            Console.WriteLine("Hint 1.Retrieving Top Two Record For Age Is Less Than 60 \n 2.Retrieving Teen Age Person\n");
+            Console.WriteLine("Hint 1.Retrieving Top Two Record For Age Is Less Than 60 \n 2.Retrieving Teen Age Person\n 3. All PersonAverage Of Age");
             int choice = Convert.ToInt32(Console.ReadLine());
             switch (choice)
             {
@@ -31,6 +31,12 @@ namespace LambdaExpressionBatchDemo
                     {
                         Console.WriteLine("No, we have no Teenagers age of person");
                     }
+                    break;
+                case 3:
+                    // Uc4 Average
+                    Console.WriteLine(" All Person Average of Age");
+                    double average = listPersonInCity.Average(e => e.Age);
+                    Console.WriteLine("the average of all person age is " +average);
                     break;
             }
             Console.ReadLine();
