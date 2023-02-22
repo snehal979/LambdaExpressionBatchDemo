@@ -10,7 +10,7 @@ namespace LambdaExpressionBatchDemo
             List<PersonData> listPersonInCity = new List<PersonData>();
             AddRecord(listPersonInCity);
             Display(listPersonInCity);
-            Console.WriteLine("Hint 1.Retrieving Top Two Record For Age Is Less Than 60 \n");
+            Console.WriteLine("Hint 1.Retrieving Top Two Record For Age Is Less Than 60 \n 2.Retrieving Teen Age Person\n");
             int choice = Convert.ToInt32(Console.ReadLine());
             switch (choice)
             {
@@ -19,6 +19,18 @@ namespace LambdaExpressionBatchDemo
                     Console.WriteLine("Retrieving Top Two Record For Age Is Less Than 60");
                     var personList =listPersonInCity.FindAll(e => (e.Age <= 60)).Take(2).ToList();
                     Display(personList);
+                    break;
+                case 2:
+                    //Uc3
+                    Console.WriteLine("Retrieving Teen ager age Person");
+                    if (listPersonInCity.Any(e => (e.Age >= 15 && e.Age < 18))) //Teenagers (15-17 years of age)
+                    {
+                        Console.WriteLine("Yes, we have Teenagers age of person");
+                    }
+                    else
+                    {
+                        Console.WriteLine("No, we have no Teenagers age of person");
+                    }
                     break;
             }
             Console.ReadLine();
