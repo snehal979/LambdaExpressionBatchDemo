@@ -11,7 +11,7 @@ namespace LambdaExpressionBatchDemo
             AddRecord(listPersonInCity);
             Display(listPersonInCity);
             Console.WriteLine("Hint 1.Retrieving Top Two Record For Age Is Less Than 60 \n 2.Retrieving Teen Age Person\n 3. All PersonAverage Of Age" +
-                "\n4.Search Name is present or not \n 5.Skip record from the list for age is less than 60");
+                "\n4.Search Name is present or not \n 5.Skip record from the list for age is less than 60 \n 6.Remove Name");
             int choice = Convert.ToInt32(Console.ReadLine());
             switch (choice)
             {
@@ -45,6 +45,9 @@ namespace LambdaExpressionBatchDemo
                     break;
                 case 5:
                     SkipRecordFromList_AgeIsLessThan60(listPersonInCity);
+                    break;
+                case 6:
+                    Remove(listPersonInCity);
                     break;
             }
             Console.ReadLine();
@@ -89,6 +92,24 @@ namespace LambdaExpressionBatchDemo
             {
                 Console.WriteLine("Name "+data.Name+" age "+data.Age);
             }
+        }
+        /// <summary>
+        /// Uc7 Remove specific name from the list
+        /// </summary>
+        public static void Remove(List<PersonData> listPersonInCity)
+        {
+            Console.WriteLine("Enter the Remove Name");
+            string specificName = Console.ReadLine();
+            int name =listPersonInCity.RemoveAll(e => (e.Name == specificName));//Return integer
+            if(name > 0)
+            {
+                Console.WriteLine("Name {0} is remove Special name From List",specificName);
+            }
+            else
+            {
+                Console.WriteLine("Name {0} is not found in list",specificName);
+            }
+            
         }
     }
 }
