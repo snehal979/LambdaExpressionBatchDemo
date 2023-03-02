@@ -11,7 +11,7 @@ namespace LambdaExpressionBatchDemo
             AddRecord(listPersonInCity);
             Display(listPersonInCity);
             Console.WriteLine("Hint 1.Retrieving Top Two Record For Age Is Less Than 60 \n 2.Retrieving Teen Age Person\n 3. All PersonAverage Of Age" +
-                "\n4.Search Name is present or not");
+                "\n4.Search Name is present or not \n 5.Skip record from the list for age is less than 60");
             int choice = Convert.ToInt32(Console.ReadLine());
             switch (choice)
             {
@@ -43,6 +43,9 @@ namespace LambdaExpressionBatchDemo
                     //Uc5
                     CheckPersonExistOrNot(listPersonInCity);
                     break;
+                case 5:
+                    SkipRecordFromList_AgeIsLessThan60(listPersonInCity);
+                    break;
             }
             Console.ReadLine();
         }
@@ -60,7 +63,7 @@ namespace LambdaExpressionBatchDemo
         }
         private static void Display(List<PersonData> listPersonInCity)
         {
-            foreach (PersonData data in listPersonInCity)
+            foreach (var data in listPersonInCity)
             {
                 Console.WriteLine("Id person :"+data.Id+"\n Name : "+data.Name+"\n address :"+data.Address+"\n Age: "+data.Age+"\n");
             }
@@ -71,12 +74,20 @@ namespace LambdaExpressionBatchDemo
             Console.WriteLine("Enter the name For search");
             string name = Console.ReadLine();
             if (listPersonInCity.Any(e => (e.Name.Contains(name))))
-            {
                 Console.WriteLine("Person is present");
-            }
             else
-            {
                 Console.WriteLine("Person is not present");
+        }
+        /// <summary>
+        /// Uc6  Skip record from the list for age is less than 60
+        /// </summary>
+        /// <param name="listPersonInCity"></param>
+        public static void SkipRecordFromList_AgeIsLessThan60(List<PersonData> listPersonInCity)
+        {
+            var record = listPersonInCity.SkipWhile(e => (e.Age <= 60));
+            foreach(var data in record)
+            {
+                Console.WriteLine("Name "+data.Name+" age "+data.Age);
             }
         }
     }
